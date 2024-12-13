@@ -1,18 +1,19 @@
----
-import {BeautyDate} from '../../helper/convertions.js'
-import {Count} from '../menu/Count.jsx'
----
-<nav class="text-blue-900 ">
+<nav class="text-blue-900">
     <ul class="list-inside list-disc">
         <li>
-            <a href="/">Home</a>
+            <a href="/">Profile</a>
         </li>
         <li>
-            <a href="/about-us">about</a>
+            <a href="/about-us">Professional experience</a>
         </li>
         <li>
-            <a href="/contacto">contacto {BeautyDate('2024-11-05')}</a>
+            <a href="/education">Education</a>
+        </li>
+        <li>
+            <a href="/education">Competencies</a>
+        </li>
+        <li>
+            <a href="/contacto">Contact</a>
         </li>
     </ul>
-    <Count num={2} client:load />
 </nav>

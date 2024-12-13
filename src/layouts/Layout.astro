@@ -1,4 +1,5 @@
 ---
+import NavBar from "../components/NavBar.astro";
 import Menu from "../components/menu/Menu.astro";
 ---
 
@@ -9,10 +10,19 @@ import Menu from "../components/menu/Menu.astro";
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>Dar&iacute;o Bravo</title>
 	</head>
 	<body>
+		<NavBar />
 		<Menu />
 		<slot />
 	</body>
 </html>
+
+<style>
+	body {
+		font-family: system-ui, sans-serif;
+		padding: 2rem;
+		margin: 0;
+	}
+</style>
