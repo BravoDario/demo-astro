@@ -1,0 +1,87 @@
+---
+import {
+    faUser,
+    faBriefcase,
+    faSchool,
+    faComputer,
+    faUsers,
+    faAddressBook,
+} from "@fortawesome/free-solid-svg-icons";
+import { library, icon } from "@fortawesome/fontawesome-svg-core";
+
+library.add(faUser, faBriefcase, faSchool, faComputer, faUsers, faAddressBook);
+
+const i = {
+    user: icon({ prefix: "fas", iconName: faUser.iconName }),
+    briefcase: icon({ prefix: "fas", iconName: faBriefcase.iconName }),
+    school: icon({ prefix: "fas", iconName: faSchool.iconName }),
+    computer: icon({ prefix: "fas", iconName: faComputer.iconName }),
+    users: icon({ prefix: "fas", iconName: faUsers.iconName }),
+    addressBook: icon({ prefix: "fas", iconName: faAddressBook.iconName }),
+};
+---
+
+<!-- listado de opciones para cv con íconos relacionados -->
+<div class="flex flex-col bg-slate-400 w-2/4">
+    <a
+        href="/cv"
+        class="flex flex-row align-bottom link text-gray-900 hover:bg-slate-600 hover:text-white w-11/12 mr-10 border-b-2 border-gray-900 my-2 mx-4"
+    >
+        <fragment set:html={i.user.html} />
+        <p class="mt-1">Perfil</p>
+    </a>
+    <a
+        href="/cv/experience"
+        class="flex flex-row align-bottom link text-gray-900 hover:bg-slate-600 hover:text-white w-11/12 mr-10 border-b-2 border-gray-900 my-2 mx-4"
+    >
+        <fragment set:html={i.briefcase.html} />
+        <p class="mt-1">Experiencia Profesional</p>
+    </a>
+    <a
+        href="/cv/education"
+        class="flex flex-row align-bottom link text-gray-900 hover:bg-slate-600 hover:text-white w-11/12 mr-10 border-b-2 border-gray-900 my-2 mx-4"
+    >
+        <fragment set:html={i.school.html} />
+        <p class="mt-1">Educación</p>
+    </a>
+    <a
+        href="/cv/technologies"
+        class="flex flex-row align-bottom link text-gray-900 hover:bg-slate-600 hover:text-white w-11/12 mr-10 border-b-2 border-gray-900 my-2 mx-4"
+    >
+        <fragment set:html={i.computer.html} />
+        <p class="mt-1">Tecnologías y herramientas</p>
+    </a>
+    <a
+        href="/cv/aptitudes"
+        class="flex flex-row align-bottom link text-gray-900 hover:bg-slate-600 hover:text-white w-11/12 mr-10 border-b-2 border-gray-900 my-2 mx-4"
+    >
+        <fragment set:html={i.computer.html} />
+        <p class="mt-1">Aptitudes y habilidades</p>
+    </a>
+    <a
+        href="/cv/contact/"
+        class="flex flex-row align-bottom link text-gray-900 hover:bg-slate-600 hover:text-white w-11/12 mr-10 border-b-2 border-gray-900 my-2 mx-4"
+    >
+        <fragment set:html={i.addressBook.html} />
+        <p class="mt-1">Contacto</p>
+    </a>
+</div>
+
+<style is:global>
+    .link {
+    }
+    .link > fragment > svg {
+        width: 2rem;
+        height: 2rem;
+    }
+    .link > fragment {
+        background: grey;
+        width: 3rem;
+        height: 3rem;
+        margin-right: 0.5rem;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+</style>

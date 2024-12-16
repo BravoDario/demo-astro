@@ -1,6 +1,5 @@
 ---
 import NavBar from "../components/NavBar.astro";
-import Menu from "../components/menu/Menu.astro";
 ---
 
 <!doctype html>
@@ -14,15 +13,13 @@ import Menu from "../components/menu/Menu.astro";
 	</head>
 	<body>
 		<NavBar />
-		<!-- <Menu /> -->
 		<slot />
 	</body>
 </html>
 
-<style>
+<style> 
 	body {
 		font-family: system-ui, sans-serif;
-		padding: 2rem;
 		margin: 0;
 	}
 </style>

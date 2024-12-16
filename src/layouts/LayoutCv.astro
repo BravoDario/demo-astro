@@ -1,5 +1,6 @@
 ---
-import Menu from "../components/Menu.astro";
+import CvOptions from "../components/CvOptions.astro";
+import NavBar from "../components/NavBar.astro";
 ---
 
 <!doctype html>
@@ -12,11 +13,12 @@ import Menu from "../components/Menu.astro";
 		<title>Astro Basics</title>
 	</head>
 	<body>
-		<h1>Menu difente para contacto</h1>
-		<slot />
-        <footer>
-            este es el footer para contacto
-        </footer>
+		<NavBar />
+		<div class="content">
+			<CvOptions />
+			<slot />
+		</div>
+		<footer>este es el footer para contacto</footer>
 	</body>
 </html>
 
@@ -26,5 +28,14 @@ import Menu from "../components/Menu.astro";
 		margin: 0;
 		width: 100%;
 		height: 100%;
+		font-family: system-ui, sans-serif;
+		margin: 0;
+	}
+	.content {
+		width: 95%;
+		margin: 2rem 1rem;
+		display: flex;
+		flex-direction: row;
+		gap: 0;
 	}
 </style>
