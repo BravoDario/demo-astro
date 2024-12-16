@@ -1,23 +1,20 @@
-<!-- 
-<nav class="">
-    <ul class=""> 
-        <li>
-            <a href="/">Home</a>
-        </li>
-        <li>
-            <a href="/about-us">Blog Astro</a>
-        </li>
-        <li>
-            <a href="/education">CV</a>
-        </li>
-    </ul>
-</nav>
- -->
-<nav class="bg-gray-800">
-    <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+---
+// Font Awesome
+import { library, icon } from "@fortawesome/fontawesome-svg-core";
+import { faHome } from "@fortawesome/free-solid-svg-icons";
+
+// Declare all  the icons you plan on using
+library.add(faHome);
+
+// Instantiate the icon with the icon function
+const homeIcon = icon({ prefix: "fas", iconName: faHome.iconName });
+---
+
+<nav class="bg-gray-800 w-screen h-20 sticky top-0 z-50">
+    <!-- Navbar para pantallas grandes c: -->
+    <div class="max-w-7xl px-2 sm:px-6 lg:px-8">
         <div class="relative flex h-16 items-center justify-between">
             <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
-                <!-- Mobile menu button-->
                 <button
                     type="button"
                     class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
@@ -26,11 +23,6 @@
                 >
                     <span class="absolute -inset-0.5"></span>
                     <span class="sr-only">Open main menu</span>
-                    <!--
-              Icon when menu is closed.
-  
-              Menu open: "hidden", Menu closed: "block"
-            -->
                     <svg
                         class="block size-6"
                         fill="none"
@@ -46,11 +38,6 @@
                             d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
                         ></path>
                     </svg>
-                    <!--
-              Icon when menu is open.
-  
-              Menu open: "block", Menu closed: "hidden"
-            -->
                     <svg
                         class="hidden size-6"
                         fill="none"
@@ -66,62 +53,72 @@
                             d="M6 18 18 6M6 6l12 12"></path>
                     </svg>
                 </button>
+
+                <a
+                    href="/"
+                    class="text-gray-300 rounded-md p-2 hover:bg-gray-700 hover:text-white w-12 mt-5"
+                >
+                    <Fragment set:html={homeIcon.html} />
+                    Home
+                </a>
             </div>
             <div
                 class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start"
             >
                 <div class="hidden sm:ml-6 sm:block">
-                    <div class="flex space-x-4">
-                        <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                    <div class="flex pt-4">
                         <a
-                            href="#"
-                            class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white"
-                            aria-current="page">Dashboard</a
+                            href="/"
+                            class="text-gray-300 rounded-md hover:bg-gray-700 hover:text-white py-2 p-10"
                         >
+                            <Fragment set:html={homeIcon.html} />
+                            Home
+                        </a>
                         <a
-                            href="#"
-                            class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
-                            >Team</a
+                            href="blog"
+                            class="rounded-md px-3 py-5 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white flex align-middle justify-center mx-5"
                         >
+                            Blog
+                        </a>
                         <a
-                            href="#"
-                            class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
-                            >Projects</a
+                            href="cv"
+                            class="rounded-md px-3 py-5 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white flex align-middle justify-center mx-5"
                         >
-                        <a
-                            class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
-                            href="/education">CV</a
-                        >
+                            CV
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Mobile menu, show/hide based on menu state. -->
+    <!-- Navbar para movil -->
     <div class="sm:hidden" id="mobile-menu">
         <div class="space-y-1 px-2 pb-3 pt-2">
-            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
             <a
-                href="#"
-                class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white"
-                aria-current="page">Dashboard</a
+                href="blog"
+                class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+                >BLog</a
             >
             <a
-                href="#"
+                href="cv"
                 class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
-                >Team</a
-            >
-            <a
-                href="#"
-                class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
-                >Projects</a
-            >
-            <a
-                href="#"
-                class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
-                >Calendar</a
+                >CV</a
             >
         </div>
     </div>
 </nav>
+<style>
+    nav {
+        margin-left: -2rem;
+        margin-top: -2rem;
+    }
+
+    .svg-inline--fa {
+        overflow: visible;
+        box-sizing: content-box;
+        display: inline-block;
+        height: 1em;
+        vertical-align: -0.125em;
+    }
+</style>
