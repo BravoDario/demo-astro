@@ -1,0 +1,15 @@
+---
+import ListBlog, {blogsEnabled} from "../../components/blog/listBlog.jsx";
+import Layout from "../../layouts/Layout.astro";
+import BlogDetails from "../../components/blog/BlogDetails.jsx";
+
+export function getStaticPaths() {
+    return blogsEnabled;
+}
+
+const blog = Astro.params;
+---
+
+<Layout>
+    <BlogDetails blogName={blog.blog} client:load />
+</Layout>

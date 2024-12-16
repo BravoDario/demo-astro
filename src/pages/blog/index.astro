@@ -1,7 +1,12 @@
 ---
-import Layout from "../../layouts/Layout.astro"
+import Layout from "../../layouts/Layout.astro";
+import ListBlog from "../../components/blog/listBlog.jsx";
 ---
 
+
 <Layout>
-    
+    <div>
+        <a href="/blog/newBlog">Crear un nuevo blog</a>
+        <ListBlog />
+    </div>
 </Layout>
