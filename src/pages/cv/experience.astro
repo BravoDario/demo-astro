@@ -3,9 +3,70 @@ import LayoutCv from "../../layouts/LayoutCv.astro";
 ---
 
 <LayoutCv>
-    <div class="bg-red-400 w-3/4">
-        <h1>Experiencia profesional</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis eaque amet sunt sed quaerat inventore cumque placeat quis! Vel accusamus perspiciatis incidunt ad ea quia autem voluptatibus suscipit consequuntur sequi.
-         Deserunt placeat obcaecati in, alias quis ut perferendis officiis iste fugiat nemo totam impedit quia esse nihil ipsam! Reiciendis sapiente odio ad velit quia. Magni animi voluptate facere ex et.</p>
+    <div class="bg-slate-400 w-3/4 p-10">
+        <h1 class="text-2xl font-bold">Experiencia profesional</h1>
+        <ul class="w-3/4 text-justify">
+            <li class="flex flex-row justify-between mt-4">
+                <span class="bg-white rounded-full p-2 h-full">
+                    <svg
+                        class="w-8 h-8"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        width="24"
+                        height="24"
+                        stroke-width="2"
+                    >
+                        <path
+                            d="M3 7m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z"
+                        ></path>
+                        <path d="M8 7v-2a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v2"
+                        ></path>
+                        <path d="M12 12l0 .01"></path>
+                        <path d="M3 13a20 20 0 0 0 18 0"></path>
+                    </svg>
+                </span>
+
+                <p class="px-3">
+                    <strong>Qualite:</strong>
+                    <em>Desarrollador (Mayo 2022 - Enero 2023)</em>
+                    <br /> Experiencia en las aplicaciones de desarrollo como MySQL
+                    Workbench y Sheel, así como experiencia en diferentes IDE's de
+                    desarrollo.
+                </p>
+            </li>
+            <li class="flex flex-row justify-between mt-4">
+                <span class="p-2 rounded-full bg-white h-full">
+                    <svg
+                        class="w-8 h-8"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        width="24"
+                        height="24"
+                        stroke-width="2"
+                    >
+                        <path
+                            d="M3 7m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z"
+                        ></path>
+                        <path d="M8 7v-2a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v2"
+                        ></path>
+                        <path d="M12 12l0 .01"></path>
+                        <path d="M3 13a20 20 0 0 0 18 0"></path>
+                    </svg>
+                </span>
+                <p class="px-3">
+                    <strong> NTT-DATA:</strong>
+                    <em>Desarrollador de Software (Mayo - Diciembre 2023)</em>
+                    <br /> Experiencia en el framework Lit, además de desarrollo de habilidades blandas y experiencia en trabajo en equipo. Desarrollo frontend para aplicación de gestión de anuncios para Telcel
+                </p>
+            </li>
+        </ul>
     </div>
 </LayoutCv>
