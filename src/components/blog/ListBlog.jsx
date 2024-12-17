@@ -1,10 +1,3 @@
-const blog = {
-    title: "",
-    content: "",
-    date: "",
-    imageSrc: ""
-}
-
 export let blogs = [
     {
         "title": "Primer Título",
@@ -76,19 +69,15 @@ export const getBlog = (title) => {
     return blogs.find((blog) => blog.title === title);
 };
 
-//componente de react para obtener los blogs
 const ListBlog = () => {
 
     return (
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 ml-14">
             {blogs ? blogs.map((blog) => (
-                /* hover con animación */
                 <a href={"/blog/" + blog.title} key={blog.title} className="w-11/12 bg-slate-400 rounded-lg p-4 hover:bg-slate-300 hover:rounded-xl hover:scale-105 transition-all duration-300">
                     <h2 className="text-2xl font-bold">{blog.title}</h2>
                     <p className="text-sm">Realizado el: {blog.date}</p>
-                    {/* limitar el contenido del blog a 100 caracteres */}
                     <p>{blog.content.substring(0, 100) + "..."}</p>
-                    {/*  <img src={blog.imageSrc} alt="blog" /> */}
                 </a>
             )) : ''}
         </div>
