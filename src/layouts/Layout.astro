@@ -13,11 +13,13 @@ import NavBar from "../components/NavBar.astro";
 	</head>
 	<body>
 		<NavBar />
-		<slot />
+		<div class="bg-slate-200 h-screen pt-5 w-full content">
+			<slot />
+		</div>
 	</body>
 </html>
 
-<style> 
+<style>
 	body {
 		font-family: system-ui, sans-serif;
 		margin: 0;
