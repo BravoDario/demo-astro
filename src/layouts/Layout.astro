@@ -1,4 +1,6 @@
 ---
+import { ClientRouter } from "astro:transitions";
+import { fade } from "astro:transitions";
 import NavBar from "../components/NavBar.astro";
 ---
 
@@ -10,8 +12,10 @@ import NavBar from "../components/NavBar.astro";
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>Dar&iacute;o Bravo</title>
+
+		<ClientRouter client:visible />
 	</head>
-	<body>
+	<body transition:animate={fade({ duration: 200 })}>
 		<NavBar />
 		<div class="bg-slate-200 h-screen pt-5 w-full content">
 			<slot />

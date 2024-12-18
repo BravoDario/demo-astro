@@ -1,4 +1,5 @@
 ---
+import { ClientRouter, fade } from "astro:transitions";
 import CvOptions from "../components/CvOptions.astro";
 import Footer from "../components/Footer.astro";
 import NavBar from "../components/NavBar.astro";
@@ -12,12 +13,15 @@ import NavBar from "../components/NavBar.astro";
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>Astro Basics</title>
+		<ClientRouter client:visible />
 	</head>
-	<body>
+	<body transition:animate={fade({ duration: 200 })}>
 		<NavBar />
-		<div class="content">
+		<div class="content min-h-96">
 			<CvOptions />
-			<slot />
+			<div class="ml-96 w-3/4">
+				<slot />
+			</div>
 		</div>
 		<Footer />
 	</body>
