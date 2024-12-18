@@ -2,6 +2,8 @@
 import { ClientRouter } from "astro:transitions";
 import { fade } from "astro:transitions";
 import NavBar from "../components/NavBar.astro";
+
+const {title} = Astro.props;
 ---
 
 <!doctype html>
@@ -11,7 +13,7 @@ import NavBar from "../components/NavBar.astro";
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Dar&iacute;o Bravo</title>
+		<title>{title}</title>
 
 		<ClientRouter client:visible />
 	</head>
