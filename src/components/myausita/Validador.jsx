@@ -1,4 +1,3 @@
-import { set } from 'astro:schema';
 import React, { useState } from 'react';
 require('dotenv').config(); 
 
