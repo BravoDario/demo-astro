@@ -1,8 +1,12 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Welcome from "../components/Welcome.astro";
+import Validador from "../components/myausita/Validador";
+import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Darío Bravo">
 	<Welcome />
+	<h1>Register</h1>
+	
+	<Validador client:only="react" />
 </Layout>
