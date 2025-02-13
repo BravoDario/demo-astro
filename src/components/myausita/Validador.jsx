@@ -44,6 +44,8 @@ const Validador = () => {
 
     return (
         <div>
+
+            <button onClick={getImages}>Get Images</button>
             <h1>Register</h1>
             <p>Already have an account? <a href="/signin">Sign in</a></p>
             <label htmlFor="email" >Email</label>
