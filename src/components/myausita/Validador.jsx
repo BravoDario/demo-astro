@@ -1,43 +1,44 @@
+import { set } from 'astro:schema';
 import React, { useState } from 'react';
+require('dotenv').config(); 
 
 const Validador = () => {
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [isValid, setIsValid] = useState(false);
-
-    const handlePasswordChange = (e) => {
-        const newPassword = e.target.value;
-        setPassword(newPassword);
-        setIsValid(validatePassword(newPassword));
-    };
-
-    const validatePassword = (password) => {
-        // Aquí puedes implementar tu lógica de validación de contraseña
-        // Por ejemplo, puedes verificar si la contraseña tiene al menos 8 caracteres
-        return password.length >= 8;
-    };
 
     const handler = async () => {
-        const formData = new FormData();
-        formData.append("name", "Darío Bravo");
-        formData.append("email", "dario.bravo@gmail.com");
-        formData.append("password", "123456789")
+        const response = await fetch(`${process.env.endpoint}/login`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email, password })
+        });
 
-        try {
-            const response = await fetch("apis/register", {
-                params: "sí hay",
-                method: "POST"
-            });
+        if (response.ok) {
+            const userRecord = await response.json();
+            console.log('User logged in:', userRecord);
+        } else {
+            const errorMessage = await response.text();
+            console.error('Login failed:', errorMessage);
+        }
+    }
 
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+    const getImages = async () => {
+        const response = await fetch(`${process.env.endpoint}/images`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
             }
+        });
 
-            const data = await response.json();
-            console.log(data);
-        } catch (error) {
-            console.error("Error:", error);
-
-        };
+        if (response.ok) {
+            const images = await response.json();
+            console.log('Images:', images);
+        } else {
+            const errorMessage = await response.text();
+            console.error('Failed to get images:', errorMessage);
+        }
     }
 
 
@@ -45,16 +46,13 @@ const Validador = () => {
         <div>
             <h1>Register</h1>
             <p>Already have an account? <a href="/signin">Sign in</a></p>
-            <label htmlFor="name">Name</label>
-            <input type="text" name="name" id="name" />
             <label htmlFor="email" >Email</label>
-            <input type="email" name="email" id="email" />
+            <input type="email" name="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
             <label htmlFor="password">Password</label>
-            <input type="password" name="password" id="password" />
+            <input type="password" name="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
             <button
                 type="submit"
                 className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-
                 onClick={handler}
             >
                 Register
