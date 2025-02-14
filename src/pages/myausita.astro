@@ -1,10 +1,10 @@
 ---
-import Validador from "../components/myausita/Validador.jsx";
+import MyauImages from "../components/myausita/MyauImages";
 import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Myau Page">
-    <h2>Myau Page</h2>
+  <MyauImages client:only="react" />
 </Layout>
 <style is:global>
   .welcome-title {

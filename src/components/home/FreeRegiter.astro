@@ -1,0 +1,249 @@
+---
+import i18next, { t } from 'i18next'
+import { CounterDown } from './CounterDown.jsx'
+const lang = i18next.language
+
+const base = i18next.language === 'es' ? '' : `/${lang}`
+---
+
+<section
+  class='relative lab-bg py-10 bg-[url("/img/bg_ecomondo.webp")] bg-fixed'
+>
+  <div class='container mx-auto px-4 grid md:grid-cols-2 gap-10'>
+    <div class='grid place-content-between gap-5'>
+      <p
+        data-aos='fade-right'
+        data-aos-duration='1000'
+        class='text-black text-3xl xl:text-5xl font-extrabold uppercase'
+      >
+        {t('home.slogan')}
+      </p>
+      <div data-aos='fade-down' data-aos-duration='1000'>
+        <div class='font-extrabold text-black text-2xl flex items-center gap-6'>
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            fill='none'
+            viewBox='0 0 24 24'
+            stroke-width='1.5'
+            stroke='currentColor'
+            class='size-6'
+          >
+            <path
+              stroke-linecap='round'
+              stroke-linejoin='round'
+              d='M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5'
+            ></path>
+          </svg>
+          {t('home.event-date')}
+        </div>
+        <p
+          class='text-black text-xl mt-4'
+          set:html={t('home.ecomondo_date_hours')}
+        />
+      </div>
+    </div>
+    <div class='grid gap-6 place-content-center place-items-center'>
+      <CounterDown
+        client:only='react'
+        dias={t('home.days')}
+        horas={t('home.hours')}
+        minutos={t('home.minutes')}
+        segundos={t('home.seconds')}
+      />
+      <div
+        class='container mx-auto py-5 px-4 flex justify-center gap-5 rounded-xl'
+      >
+        <a
+          href={`${base}/registro`}
+          class='card p-5 hover:scale-105 ease-in-out duration-300'
+        >
+          <span class='text-white z-10 font-extrabold md:text-4xl text-center'
+            >{t('home.free_register')}</span
+          >
+        </a>
+        <a
+          href={`${base}/field-trip-checkout`}
+          class='card p-5 hover:scale-105 ease-in-out duration-300'
+        >
+          <span class='text-white z-10 font-extrabold md:text-4xl text-center'
+            >{t('home.access_field_trip')}</span
+          >
+        </a>
+      </div>
+    </div>
+  </div>
+  <!-- ACCESOS DIRECTOS -->
+  <section class='my-12 container mx-auto'>
+    <div class='flex lg:flex-row flex-col justify-center items-center gap-4'>
+      <a
+        href={i18next.language === 'en'
+          ? '/files/ECO-2025-FS-ENG-V-last_compressed.pdf'
+          : '/files/ECO-2025-FS-ESP-V-last_compressed.pdf'}
+        target='_blank'
+      >
+        <div
+          class='btn-backColor text-black w-[240px] h-[50px] text-center rounded-3xl px-4 flex justify-center items-center'
+        >
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            width='22'
+            height='22'
+            viewBox='0 0 512 512'
+            ><path
+              fill='#ffffff'
+              d='M440 56h-56v40h48v376H88V88h48V56H80a24.028 24.028 0 0 0-24 24v392a24.028 24.028 0 0 0 24 24h352a24.028 24.028 0 0 0 24-24V80a24.028 24.028 0 0 0-24-24'
+            ></path><path
+              fill='#ffffff'
+              d='M192 140h128a24.028 24.028 0 0 0 24-24V16H168v100a24.028 24.028 0 0 0 24 24m8-92h112v60H200Z'
+            ></path></svg
+          >
+          {t('home.direct-access.item1')}
+        </div>
+      </a>
+      <a href='/files/EM-RE-MEX-2025-240125-Model.pdf' target='_blank'>
+        <div
+          class='btn-backColor text-black w-[240px] h-[50px] text-center rounded-3xl px-4 flex justify-center items-center'
+        >
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            width='22'
+            height='22'
+            viewBox='0 0 48 48'
+            ><path
+              fill='none'
+              stroke='#ffffff'
+              stroke-linejoin='round'
+              stroke-width='4'
+              d='M20 6H6v11h14zm22 25H28v11h14zm0-25H28v17h14zM20 25H6v17h14z'
+            ></path></svg
+          >
+          {t('home.direct-access.item2')}
+        </div>
+      </a>
+      <a href='/files/ECOMONDO_2025_SpaceAgreement ED_v2.pdf' target='_blank'>
+        <div
+          class='btn-backColor text-black w-[240px] h-[50px] text-center rounded-3xl px-4 flex justify-center items-center'
+        >
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            width='22'
+            height='22'
+            viewBox='0 0 48 48'
+            ><g
+              fill='none'
+              stroke='#ffffff'
+              stroke-linecap='round'
+              stroke-linejoin='round'
+              stroke-width='4'
+              ><path
+                d='M10 44h28a2 2 0 0 0 2-2V14H30V4H10a2 2 0 0 0-2 2v36a2 2 0 0 0 2 2M30 4l10 10'
+              ></path><path d='m21 35l10-10l-4-4l-10 10v4z'></path></g
+            ></svg
+          >
+          {t('home.direct-access.item3')}
+        </div>
+      </a>
+      <a
+        href={i18next.language === 'en'
+          ? '/files/AFTER_SHOW_REPORT_ECO_SOLAR_ENG_AF_2024_v3.pdf'
+          : '/files/AFTER_SHOW_REPORT_ECO_SOLAR_ESP_AF_2024_v3.pdf'}
+        target='_blank'
+      >
+        <div
+          class='btn-backColor text-black w-[240px] h-[50px] text-center rounded-3xl px-4 flex justify-center items-center'
+        >
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            width='22'
+            height='22'
+            viewBox='0 0 48 48'
+            ><g
+              fill='none'
+              stroke='#ffffff'
+              stroke-linejoin='round'
+              stroke-width='4'
+              ><path
+                d='M8 6a2 2 0 0 1 2-2h20l10 10v28a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2z'
+              ></path><path stroke-linecap='round' d='M16 20h16m-16 8h16'
+              ></path></g
+            ></svg
+          >
+          {t('home.direct-access.item4')}
+        </div>
+      </a>
+    </div>
+  </section>
+</section>
+<style>
+  .btn-backColor {
+    background: rgb(3, 140, 51);
+    background: linear-gradient(
+      120deg,
+      rgba(3, 140, 51, 1) 0%,
+      rgba(3, 166, 60, 1) 100%
+    );
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    transition:
+      transform 0.3s ease,
+      background 0.3s ease;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  }
+
+  .btn-backColor:hover {
+    background: rgb(3, 140, 51);
+    background: linear-gradient(
+      120deg,
+      rgba(3, 140, 51, 1) 0%,
+      rgba(3, 166, 60, 1) 100%
+    );
+    transform: scale(1.09);
+  }
+  .card {
+    width: fit-content;
+    background: #f6f6f6;
+    position: relative;
+    display: flex;
+    place-content: center;
+    place-items: center;
+    overflow: hidden;
+    border-radius: 20px;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    width: 250px;
+    background-image: linear-gradient(
+      90deg,
+      rgba(3, 145, 53) 0%,
+      rgba(3, 27, 12) 100%
+    );
+    height: 30px;
+    animation: rotBGimg 3s linear infinite;
+    transition: all 0.2s linear;
+  }
+
+  @keyframes rotBGimg {
+    from {
+      transform: rotate(0deg);
+    }
+
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .card::after {
+    content: '';
+    position: absolute;
+    background-color: #031b0c;
+    inset: 5px;
+    border-radius: 15px;
+  }
+  /* .card:hover:before {
+  background-image: linear-gradient(180deg, rgb(81, 255, 0), purple);
+  animation: rotBGimg 3.5s linear infinite;
+} */
+</style>

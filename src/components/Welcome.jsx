@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { tokenChecker } from "../helper/tokenChecker";
 
 const Welcome = () => {
     const token = localStorage.getItem("token");

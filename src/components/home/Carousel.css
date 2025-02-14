@@ -1,0 +1,30 @@
+.clipped-element {
+  background-color: #031B0C;
+  clip-path: circle(60% at 40% 100%);
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #031B0C;
+  font-size: 20px;
+  border-radius: 0.4rem;
+  background-color: #0110074a;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background-color: #215e3a4a;
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+  font-size: 20px;
+}
+
+.swiper-pagination-bullet {
+  background-color: #011007;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #1c6036;
+}
