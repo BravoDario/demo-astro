@@ -1,5 +1,28 @@
 ---
 import Validador from "../components/myausita/Validador.jsx";
+import Layout from "../layouts/Layout.astro";
 ---
 
-<Validador/>
+<Layout title="Myau Page">
+    <h2>Myau Page</h2>
+</Layout>
+<style is:global>
+  .welcome-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 0.5rem;
+  }
+
+  .welcome-title h1 {
+    font-size: 3rem;
+    font-weight: 500;
+  }
+
+  .welcome-title p {
+    font-size: 1.5rem;
+    font-weight: 300;
+  }
+</style>
