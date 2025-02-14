@@ -1,3 +1,3 @@
 export const apiConfig = {
-    endpoint: "http://localhost:3000",
+    endpoint: "https://professional-apis.vercel.app",
 };
