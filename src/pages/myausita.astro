@@ -1,11 +1,15 @@
 ---
 import MyauImages from "../components/myausita/MyauImages";
-import Layout from "../layouts/Layout.astro";
+import LayoutUsers from "../layouts/LayoutUsers.astro";
 ---
 
-<Layout title="Myau Page">
-  <MyauImages client:only="react" />
-</Layout>
+<LayoutUsers title="Myau Page">
+  <div
+    class="bg-gradient-to-r from-purple-500 to-pink-500 text-white -mt-5"
+  >
+    <MyauImages client:only="react" />
+  </div>
+</LayoutUsers>
 <style is:global>
   .welcome-title {
     display: flex;
