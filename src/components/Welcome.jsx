@@ -35,6 +35,15 @@ const Welcome = () => {
                             CV
                         </div>
                     </a>
+                    <a
+                        href="/game"
+                        className="button bg-slate-900 text-gray-300 rounded px-5 py-2 hover:bg-slate-700 hover:text-gray-100 h-20 flex align-middle justify-center"
+                    >
+                        <div className="w-10 text-center">
+                            {/* <Fragment set:html={fileIcon.html} /> */}
+                            JUgo
+                        </div>
+                    </a>
                     {isLogin ? (
                         <a
                             href="/myausita"
