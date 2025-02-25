@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFile, faUser, faGamepad, faSign } from "@fortawesome/free-solid-svg-icons";
 
 const Welcome = () => {
     const token = localStorage.getItem("token");
-    console.log(token);
     const [isLogin, setIsLogin] = useState(token ? true : false);
 
     useEffect(() => {
@@ -22,7 +23,7 @@ const Welcome = () => {
                         className="button bg-slate-900 text-gray-300 rounded px-5 py-2 hover:bg-slate-700 hover:text-gray-100 h-20 flex align-middle justify-center"
                     >
                         <div className="w-10 text-center">
-                            {/* <Fragment set:html={fileIcon.html} /> */}
+                            <FontAwesomeIcon icon={faFile} />
                             Blog
                         </div>
                     </a>
@@ -31,7 +32,7 @@ const Welcome = () => {
                         className="button bg-slate-900 text-gray-300 rounded px-5 py-2 hover:bg-slate-700 hover:text-gray-100 h-20 flex align-middle justify-center"
                     >
                         <div className="w-10 text-center">
-                            {/* <Fragment set:html={userIcon.html} /> */}
+                            <FontAwesomeIcon icon={faUser} />
                             CV
                         </div>
                     </a>
@@ -40,7 +41,7 @@ const Welcome = () => {
                         className="button bg-slate-900 text-gray-300 rounded px-5 py-2 hover:bg-slate-700 hover:text-gray-100 h-20 flex align-middle justify-center"
                     >
                         <div className="w-10 text-center">
-                            {/* <Fragment set:html={fileIcon.html} /> */}
+                            <FontAwesomeIcon icon={faGamepad} />
                             JUgo
                         </div>
                     </a>
@@ -50,7 +51,7 @@ const Welcome = () => {
                             className="button bg-slate-900 text-gray-300 rounded px-5 py-2 hover:bg-slate-700 hover:text-gray-100 h-20 flex align-middle justify-center"
                         >
                             <div className="w-10 text-center">
-                                {/* <Fragment set:html={userIcon.html} /> */}
+                                <FontAwesomeIcon icon={faSign} />
                                 myausita ;3
                             </div>
                         </a>

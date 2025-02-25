@@ -1,8 +1,10 @@
 ---
-import Game from "../components/Game.jsx";
+import GameComponent from "../components/Game.jsx";
 import Layout from "../layouts/Layout.astro";
+import GrapgLetters from "../components/GraphLetters.jsx";
 ---
 
 <Layout title="Juego">
-	<Game client:only="react" />
+	<GameComponent client:only="react" />
+	<!-- <GrapgLetters client:only="react" /> -->
 </Layout>
