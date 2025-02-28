@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const indexes = {
     a: { index: [0, 0], counter: 0 },
@@ -100,7 +100,6 @@ const GraphLetters = () => {
 
     useEffect(() => {
         breakWord();
-        //console.log(letterIndex);
     }, [word]);
 
     const getIndexLetter = (indexX, indexY) => {
@@ -109,17 +108,24 @@ const GraphLetters = () => {
     }
 
     const getLetter = (x, y) => {
+        let letter = "";
+        console.log(letters);
         for (const [key, value] of Object.entries(letters)) {
             if (value.index[0] === x && value.index[1] === y) {
-                return key;
+                letter = key;
             }
         }
-        return null;
+        return letter;
     }
 
     const getCounterByLetter = (x, y) => {
-        const letter = getLetter(x, y);
-        return letterIndex[letter.toLowerCase()].counter;
+        for (const [key, value] of Object.entries(letters)) {
+            if (value.index[0] === x && value.index[1] === y) {
+                break;
+            }
+        }
+        //console.log(letter);
+        //return letterIndex[letter.toLowerCase()].counter;
     }
 
     return (
@@ -129,7 +135,7 @@ const GraphLetters = () => {
             <div className="*:mx-2">
                 {getMesh().map((square, indexY) => {
                     return (
-                        <>
+                        <React.Fragment key={indexY}>
                             <div className="flex flex-row justify-end">
                                 {indexY == 0 ? ["Y/X", ...square].map((square) =>
                                     <span className=" min-h-[25px] min-w-[25px] border-[1px] text-center" key={square}>
@@ -145,11 +151,11 @@ const GraphLetters = () => {
                                     square.map((square, indexX) => <span
                                         className={`${getIndexLetter(indexX, indexY) ? "bg-red-300" : 'bg-slate-400'} min-h-[25px] min-w-[25px] border-[1px] hover:bg-slate-600 hover:text-white text-center`}
                                         key={indexX}>
-                                        {/* getCounterByLetter(indexX, indexY) */}
+                                        {getLetter(indexX, indexY)}
                                     </span>)
                                 }
                             </div>
-                        </>
+                        </React.Fragment>
                     )
                 })}
             </div>

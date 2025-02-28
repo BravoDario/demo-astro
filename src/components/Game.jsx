@@ -1,3 +1,5 @@
+import { faShieldCat as faCat, faCheese, faSquare } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState, useRef } from "react";
 
 const GameComponent = () => {
@@ -44,6 +46,7 @@ const GameComponent = () => {
                     } else {
                         clearInterval(intervalRef.current);
                         setPlaying(false);
+                        
                         setScores([...scores, getScore()]);
                         return 0;
                     }
@@ -52,6 +55,7 @@ const GameComponent = () => {
 
             return () => clearInterval(intervalRef.current);
         }
+        setScores([...scores, getScore()]);
     }, [playing]);
 
     useEffect(() => {
@@ -96,7 +100,7 @@ const GameComponent = () => {
 
                 <div className="max-w-xs mx-auto">
                     <label htmlFor="quantity-input" className="block mb-2 text-sm font-medium text-gray-900" >Cantidad de cuadros</label>
-                    <div class="relative flex items-center max-w-[8rem]">
+                    <div className="relative flex items-center max-w-[8rem]">
                         <button id="decrement-button" data-input-counter-decrement="quantity-input" className="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-s-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none"
                             onClick={() => { if (number > 2 && number < 50) setNumber(number - 1) }}
                         >
@@ -118,7 +122,7 @@ const GameComponent = () => {
                 </div>
                 <div className="max-w-xs mx-auto">
                     <label htmlFor="quantity-input" className="block mb-2 text-sm font-medium text-gray-900" >Tiempo</label>
-                    <div class="relative flex items-center max-w-[8rem]">
+                    <div className="relative flex items-center max-w-[8rem]">
                         <button id="decrement-button" data-input-counter-decrement="quantity-input" className="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-s-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none"
                             onClick={() => { if (maxTime > 2 && maxTime < 50) setMaxTime(maxTime - 1) }}
                         >
@@ -154,11 +158,14 @@ const GameComponent = () => {
                     <h2>Tiempo: {seconds}</h2>
                     <h3>X {player[0]} - Y {player[1]}</h3>
                     <h3>Puntuación  {getScore()}</h3>
-                    <h5>
-                        Récord: {Math.max(...scores)}
-                    </h5>
                 </>
                 : ''}
+
+            <h5>
+                Récord: {scores.sort((a, b) => b - a)[0]}
+                <br />
+                Último: {scores[scores.length - 1]}
+            </h5>
             {getMesh().map((square, indexY) => {
                 return (
                     <div className="flex flex-row gap-2 my-2 items-center justify-center" key={indexY}>
@@ -166,9 +173,17 @@ const GameComponent = () => {
                             square.map((square, indexX) => {
                                 return (
                                     <button className={(
-                                        player[1] === (indexY) && player[0] === (indexX) ? "bg-green-700 opacity-35" : 
-                                        target[1] === (indexY) && target[0] === (indexX) ? " bg-red-400 opacity-55" : " bg-slate-300") + 
-                                        " h-12 w-12 rounded-md hover:bg-slate-600 hover:text-white text-center"} key={indexX}>
+                                        player[1] === (indexY) && player[0] === (indexX) ? "bg-[#] " :
+                                            target[1] === (indexY) && target[0] === (indexX) ? " bg-[#ba6427] " : " bg-slate-300") +
+                                        " h-12 w-12 rounded-md hover:bg-slate-600 hover:text-white text-center "} key={indexX}>
+                                        <FontAwesomeIcon icon={
+                                            player[1] === (indexY) && player[0] === (indexX) ? faCat :
+                                                target[1] === (indexY) && target[0] === (indexX) ? faCheese : faSquare}
+                                            color={
+                                                player[1] === (indexY) && player[0] === (indexX) ? "#a9af9b" :
+                                                    target[1] === (indexY) && target[0] === (indexX) ? "#d1a02d" : "#cbd5e1"}
+                                            size="2x"
+                                        />
                                     </button>
                                 )
                             })
