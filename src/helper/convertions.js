@@ -1,7 +1,10 @@
-function BeautyDate(date){
+function BeautyDate(date) {
     const newDate = date.toString()
     return date
-    
 }
 
-export {BeautyDate}
+function ConvertNumberToHex(number) {
+    return number.toString(16)
+}
+
+export { BeautyDate, ConvertNumberToHex }
