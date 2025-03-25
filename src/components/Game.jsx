@@ -3,15 +3,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState, useRef } from "react";
 
 const GameComponent = () => {
-    const [number, setNumber] = useState(5);
-    const [player, setPlayer] = useState([1, 0]);
-    const [target, setTarget] = useState([Math.floor(Math.random() * number), Math.floor(Math.random() * number)]);
+    const [number, setNumber] = useState(2);
     const [score, setScore] = useState(0);
-    const [maxTime, setMaxTime] = useState(20);
+    const [maxTime, setMaxTime] = useState(5);
     const [seconds, setSeconds] = useState(0);
+    const [counter, setCounter] = useState(0);
     const [playing, setPlaying] = useState(false);
     const [message, setMessage] = useState("");
-    const [scores, setScores] = useState([0]);
+    const [scores, setScores] = useState([]);
+    const [player, setPlayer] = useState([1, 0]);
+    const [target, setTarget] = useState([Math.floor(Math.random() * number), Math.floor(Math.random() * number)]);
 
     const intervalRef = useRef(null);
 
@@ -19,6 +20,7 @@ const GameComponent = () => {
         setPlaying(true);
         setSeconds(maxTime);
         setScore(0);
+        setCounter(0);
     };
 
     const handleStop = () => {
@@ -42,12 +44,17 @@ const GameComponent = () => {
             intervalRef.current = setInterval(() => {
                 setSeconds(prev => {
                     if (prev > 0) {
+
+                        if (prev === 1) {
+                            const realScore = ((counter * (maxTime - seconds) + 10) * 3)
+                            setScore(realScore);
+                            setScores([...scores, realScore])
+                        };
                         return prev - 1;
                     } else {
                         clearInterval(intervalRef.current);
                         setPlaying(false);
-                        
-                        setScores([...scores, getScore()]);
+                        setCounter(0);
                         return 0;
                     }
                 });
@@ -55,7 +62,6 @@ const GameComponent = () => {
 
             return () => clearInterval(intervalRef.current);
         }
-        setScores([...scores, getScore()]);
     }, [playing]);
 
     useEffect(() => {
@@ -80,7 +86,8 @@ const GameComponent = () => {
 
     useEffect(() => {
         if (player[0] === target[0] && player[1] === target[1]) {
-            setScore(prev => prev + 1);
+            setCounter(counter + 1);
+            setScore(25);
             setPlayer([Math.floor(Math.random() * number), Math.floor(Math.random() * number)]);
             setTarget([Math.floor(Math.random() * number), Math.floor(Math.random() * number)]);
         }
@@ -91,13 +98,12 @@ const GameComponent = () => {
     }, [number]);
 
     const getScore = () => {
-        return playing ? ((score * (maxTime - seconds)) / 2).toString().padStart(4, "0") : 0;
+        return playing ? score.toString().padStart(4, "0") : 0;
     };
 
     return (
         <div className="flex flex-col items-center justify-center">
             <div className="flex flex-row gap-2 items-end justify-center text-center">
-
                 <div className="max-w-xs mx-auto">
                     <label htmlFor="quantity-input" className="block mb-2 text-sm font-medium text-gray-900" >Cantidad de cuadros</label>
                     <div className="relative flex items-center max-w-[8rem]">
@@ -142,7 +148,6 @@ const GameComponent = () => {
                         </button>
                     </div>
                 </div>
-
                 {playing ?
                     <button onClick={handleStop} className="bg-blue-500 hover:bg-blue-700 mx-auto mb-2 max-w-[8rem] text-white font-bold py-2 px-4 rounded">
                         Parar
@@ -150,22 +155,27 @@ const GameComponent = () => {
                     <button onClick={handleStart} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                         Iniciar
                     </button>
-
                 }
             </div>
+
+            <button onClick={() => {
+                console.log({ score, scores });
+            }} className="bg-blue-500 hover:bg-blue-700 text-white font-bold mt-4 py-2 px-4 rounded">
+                show details
+            </button>
+                    {counter ?? '0'}
             {playing ?
                 <>
                     <h2>Tiempo: {seconds}</h2>
-                    <h3>X {player[0]} - Y {player[1]}</h3>
+                    {/* <h3>X {player[0]} - Y {player[1]}</h3> */}
                     <h3>Puntuación  {getScore()}</h3>
                 </>
-                : ''}
+                : <h5>
+                    Récord: {scores?.sort((a, b) => b - a)[0] ?? 0}
+                    <br />
+                    Último: {scores[0] ?? 0}
+                </h5>}
 
-            <h5>
-                Récord: {scores.sort((a, b) => b - a)[0]}
-                <br />
-                Último: {scores[scores.length - 1]}
-            </h5>
             {getMesh().map((square, indexY) => {
                 return (
                     <div className="flex flex-row gap-2 my-2 items-center justify-center" key={indexY}>
@@ -173,15 +183,15 @@ const GameComponent = () => {
                             square.map((square, indexX) => {
                                 return (
                                     <button className={(
-                                        player[1] === (indexY) && player[0] === (indexX) ? "bg-[#] " :
-                                            target[1] === (indexY) && target[0] === (indexX) ? " bg-[#ba6427] " : " bg-slate-300") +
+                                        player[1] === (indexY) && player[0] === (indexX) ? "bg-slate-200 " :
+                                            target[1] === (indexY) && target[0] === (indexX) ? " bg-[#ba6427] p-2 " : " ") +
                                         " h-12 w-12 rounded-md hover:bg-slate-600 hover:text-white text-center "} key={indexX}>
                                         <FontAwesomeIcon icon={
                                             player[1] === (indexY) && player[0] === (indexX) ? faCat :
                                                 target[1] === (indexY) && target[0] === (indexX) ? faCheese : faSquare}
                                             color={
                                                 player[1] === (indexY) && player[0] === (indexX) ? "#a9af9b" :
-                                                    target[1] === (indexY) && target[0] === (indexX) ? "#d1a02d" : "#cbd5e1"}
+                                                    target[1] === (indexY) && target[0] === (indexX) ? "#d1a02d" : "#456d98"}
                                             size="2x"
                                         />
                                     </button>
