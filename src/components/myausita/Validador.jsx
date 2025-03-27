@@ -16,8 +16,8 @@ const Validador = () => {
 
         if (response.ok) {
             const userRecord = await response.json();
-            localStorage.setItem("token", JSON.stringify(userRecord));
-            window.location.href = "/myausita";
+            localStorage.setItem("token", userRecord.token);
+            window.location.href = "/";
         } else {
             const errorMessage = await response.text();
             console.error("Login failed:", errorMessage);
