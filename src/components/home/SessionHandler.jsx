@@ -7,9 +7,46 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const SessionHandler = () => {
     const [token, setToken] = useState(localStorage.getItem("token"));
+    const [role, setRole] = useState(localStorage.getItem("role"));
     const [isLogin, setIsLogin] = useState(token ? true : false);
     const [message, setMessage] = useState("");
     const [options, setOptions] = useState(false)
+
+    const optionsByRole = {
+        admin: <ul className="bg-slate-300 py-2 rounded-md w-1/2 flex flex-col text-center">
+            <a href="#" className=" w-full px-4 py-2 hover:bg-blue-700 hover:text-white">
+                Perfil
+            </a>
+            <a href="/blogsmenu" className=" w-full px-4 py-2 hover:bg-blue-700 hover:text-white">
+                Menú de blogs
+            </a>
+            <button
+                className=" w-full px-4 py-2 hover:bg-blue-700 hover:text-white"
+                onClick={() => logout(token)}
+            >
+                Logout
+            </button>
+        </ul>,
+        user: <ul className="bg-slate-300 py-2 rounded-md w-1/2 flex flex-col text-center">
+            <a href="#" className=" w-full px-4 py-2 hover:bg-blue-700 hover:text-white">
+                Perfil
+            </a>
+            <button
+                className=" w-full px-4 py-2 hover:bg-blue-700 hover:text-white"
+                onClick={() => logout(token)}
+            >
+                Logout
+            </button>
+        </ul>,
+        "": <ul className="bg-slate-300 py-2 rounded-md w-1/2 flex flex-col text-center">
+            <a
+                href="/login"
+                className=" w-full px-4 py-2 hover:bg-blue-700 hover:text-white"
+            >
+                Iniciar sesión
+            </a>
+        </ul>,
+    };
 
     useEffect(() => {
         const validateSession = async () => {
@@ -26,38 +63,17 @@ const SessionHandler = () => {
         validateSession();
     }, [token]);
 
-
     return (
-        <div className="h-full">
-            <button onClick={() => setOptions(!options)} className="text-white h-full p-2 flex items-center justify-center gap-2">
+        <div className="h-full w-full">
+            <button onClick={() => setOptions(!options)} className="text-white h-full p-2 flex items-center justify-center gap-2 ml-5">
                 <FontAwesomeIcon className="text-white h-full" icon={faUserCircle} />
                 <FontAwesomeIcon className="text-white h-1/2" icon={faChevronDown} />
             </button>
             {
-                options ? <div className="w-full">
-                    <ul className="bg-slate-300 py-2 rounded-md w-1/2 flex flex-col text-center">
-                        {isLogin ? (
-                            <>
-                                <a href="#" className=" w-full px-4 py-2 hover:bg-blue-700 hover:text-white">
-                                    Perfil
-                                </a>
-                                <button
-                                    className=" w-full px-4 py-2 hover:bg-blue-700 hover:text-white"
-                                    onClick={() => logout(token)}
-                                >
-                                    Logout
-                                </button>
-
-                            </>
-                        ) : (
-                            <a
-                                href="/login"
-                                className="bg-blue-500 text-white rounded-lg px-4 py-2 hover:bg-blue-700 hover:text-white"
-                            >
-                                Iniciar sesión
-                            </a>
-                        )}
-                    </ul>
+                options ? <div className="w-11/12 ml-5">
+                    {
+                        isLogin ? optionsByRole[role] : optionsByRole[""]
+                    }
                 </div> : ''
             }
         </div>
