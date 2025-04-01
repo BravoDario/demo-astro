@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFile, faUser, faGamepad, faSign, faUserCircle } from "@fortawesome/free-solid-svg-icons";
-import { tokenChecker } from "../helper/tokenChecker";
+import { checkToken as tokenChecker } from "../utilities/tokenChecker";
 
 const Welcome = () => {
     const token = localStorage.getItem("token");

@@ -1,9 +1,10 @@
 
 import { useEffect, useState } from "react";
-import { tokenChecker } from "../../helper/tokenChecker";
-import logout from "../../helper/Auth";
+import { checkToken } from "../../utilities/tokenChecker";
+import logout from "../../utilities/Auth";
 import { faUserCircle, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Cookies from 'js-cookie';
 
 const SessionHandler = () => {
     const [token, setToken] = useState(localStorage.getItem("token"));
@@ -51,9 +52,10 @@ const SessionHandler = () => {
     useEffect(() => {
         const validateSession = async () => {
             if (token) {
-                const result = await tokenChecker(token);
+                const result = await checkToken(token);
                 setIsLogin(result.isLogin);
                 setMessage(result.message);
+                Cookies.set("token-demo", token, { expires: 7 });
             } else {
                 setIsLogin(false);
                 setMessage("No hay token disponible.");

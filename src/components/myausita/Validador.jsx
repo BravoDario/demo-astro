@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { apiConfig } from "../../helper/apiConfig";
+import { apiConfig } from "../../utilities/apiConfig";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { tokenChecker } from "../../helper/tokenChecker";
+import { checkToken as tokenChecker } from "../../utilities/tokenChecker";
 
 const Validador = () => {
     const [email, setEmail] = useState("");

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import GraphicMostUsed from "./GraphicMostUsed.jsx";
+import PasswordInput from "./PasswordInput.jsx";
 
 const indexes = {
     a: { index: [0, 0], counter: 0 },
@@ -94,6 +95,7 @@ const GraphLetters = () => {
     const [letterIndex, setLetterIndex] = useState(indexes);
     const [wordBreaker, setWordBreaker] = useState(word.split("").map(letter => letterIndex[letter.toLowerCase()] ?? ""));
     const [activeTab, setActiveTab] = useState('grafica');
+    const [token, setToken] = useState(localStorage.getItem("token"));
 
     const getMesh = () => {
         let squareY = [];
@@ -127,8 +129,6 @@ const GraphLetters = () => {
             return letterIndex[letterSearch].index ?? ""
         })]);
     }
-
-    useEffect(() => breakWord(), [word]);
 
     const getIndexLetter = (indexX, indexY) => {
         const l = letters.filter(l => l[0] == indexX && l[1] == [indexY])
@@ -164,6 +164,8 @@ const GraphLetters = () => {
         })
         return infoLetter.filter((letter, index, self) => index === self.findIndex(t => t.letter === letter.letter));;
     }
+
+    useEffect(() => breakWord(), [word]);
 
     const TabContent = ({ activeTab }) => {
         return (
@@ -203,9 +205,8 @@ const GraphLetters = () => {
     return (
         <div className="flex flex-col items-center justify-end">
             <div className="px-2 w-full">
-                <input type="text" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                    placeholder="Escribe tu palabra"
-                    value={word} onInput={(e) => { setWord(e.target.value) }} />
+
+                <PasswordInput word={word} setWord={setWord} token={token} />
                 <div className="flex flex-col items-center justify-center">
                     <div className="mb-4">
                         <ul className="flex flex-wrap -mb-px text-sm font-medium text-center" role="tablist">
