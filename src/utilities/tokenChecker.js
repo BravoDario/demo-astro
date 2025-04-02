@@ -1,3 +1,4 @@
+import logout from "./Auth";
 import { apiConfig } from "./apiConfig";
 import Cookies from 'js-cookie';
 
@@ -10,24 +11,25 @@ export const checkToken = async (token) => {
             },
             body: `{"token": "${token}"}`,
         }).then(res => res.json()).then(data => {
-            console.log("data", data);
             if (!data.isLogin) {
-                window.localStorage.removeItem("token");
+                logout(token);
             }
             Cookies.set("token-demo", token);
-            return data;
+            return { isLogin: data.isLogin, message: data.message };
         }).catch(err => {
-            return { isLogin: false };
+            return { isLogin: false, message: "Ha ocurrido un error interno." };
         });
     } else {
         return {
             isLogin: false,
+            message: "No hay token disponible.",
         };
     }
 };
 
 export const getToken = () => {
-    //const token = window.localStorage.getItem("token");
     const token = Cookies.get("token-demo");
+    console.log("mkaldsakldj");
+    console.log(token);
     return token ?? "";
 };

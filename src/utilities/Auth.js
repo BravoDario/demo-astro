@@ -1,4 +1,5 @@
 import { apiConfig } from "./apiConfig";
+import Cookies from 'js-cookie';
 
 const logout = (token) => {
     localStorage.removeItem("token");
@@ -12,6 +13,7 @@ const logout = (token) => {
         console.log("data", data);
         if (!data.isLogin) {
             window.localStorage.removeItem("token");
+            Cookies.remove("token-demo");
             window.location.href = "/login";
         }
         return data;

@@ -53,7 +53,7 @@ const SessionHandler = () => {
         const validateSession = async () => {
             if (token) {
                 const result = await checkToken(token);
-                setIsLogin(result.isLogin);
+                setIsLogin(result.isLogin??false);
                 setMessage(result.message);
                 Cookies.set("token-demo", token, { expires: 7 });
             } else {
@@ -74,7 +74,7 @@ const SessionHandler = () => {
             {
                 options ? <div className="w-11/12 ml-5">
                     {
-                        isLogin ? optionsByRole[role] : optionsByRole[""]
+                        optionsByRole[ isLogin ? role : "" ]
                     }
                 </div> : ''
             }

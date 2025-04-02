@@ -15,7 +15,7 @@ const {title} = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 
-		<ClientRouter client:visible />
+		<ClientRouter />
 	</head>
 	<body transition:animate={fade({ duration: 200 })}>
 		<div class="bg-slate-200 h-full pt-5 w-full content">

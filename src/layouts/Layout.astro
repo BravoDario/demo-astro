@@ -3,10 +3,8 @@ import { ClientRouter } from "astro:transitions";
 import { fade } from "astro:transitions";
 import NavBar from "../components/NavBar.astro";
 import Footer from "../components/Footer.astro";
-import { getToken } from "../utilities/tokenChecker";
 
 const {title} = Astro.props;
-const token = getToken();
 ---
 
 <!doctype html>
@@ -18,7 +16,7 @@ const token = getToken();
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 
-		<ClientRouter client:visible />
+		<ClientRouter />
 	</head>
 	<body transition:animate={fade({ duration: 200 })}>
 		<NavBar />
