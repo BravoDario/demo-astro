@@ -13,7 +13,9 @@ const logout = (token) => {
         console.log("data", data);
         if (!data.isLogin) {
             window.localStorage.removeItem("token");
+            window.localStorage.removeItem("role");
             Cookies.remove("token-demo");
+            Cookies.remove("role-demo");
             window.location.href = "/login";
         }
         return data;

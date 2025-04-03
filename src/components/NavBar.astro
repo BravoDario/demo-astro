@@ -111,13 +111,16 @@ const homeIcon = icon({ prefix: "fas", iconName: faHome.iconName });
     </div>
 
     <div class="flex flex-row justify-center h-full py-2">
-        <a class="flex flex-col h-full w-1/4 items-center justify-center rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:*:brightness-200"
-            href="/" 
+        <a
+            class="flex flex-col h-full w-1/4 items-center justify-center rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:*:brightness-200"
+            href="/"
         >
             <Fragment set:html={homeIcon.html} />
             Home
         </a>
-        <div class="flex flex-row items-center justify-center gap-2 w-1/2 *:h-full *:flex *:items-center *:justify-center *:min-w-20 border-x-2 border-gray-700">
+        <div
+            class="flex flex-row items-center justify-center gap-2 w-1/2 *:h-full *:flex *:items-center *:justify-center *:min-w-20 border-x-2 border-gray-700"
+        >
             <a
                 href="/blog"
                 class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
@@ -130,14 +133,8 @@ const homeIcon = icon({ prefix: "fas", iconName: faHome.iconName });
             >
                 CV
             </a>
-            <a
-                href="/game"
-                class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
-            >
-                JUgo
-            </a>
         </div>
-        <div class="w-1/4 ">
+        <div class="w-1/4">
             <SessionHandler client:only="react" />
         </div>
     </div>

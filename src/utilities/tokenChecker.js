@@ -11,20 +11,23 @@ export const checkToken = async (token) => {
             },
             body: `{"token": "${token}"}`,
         }).then(res => res.json()).then(data => {
-            if (!data.isLogin) {
+            const { isLogin, message } = data;
+            
+            if (!isLogin) {
                 logout(token);
             }
+            
             Cookies.set("token-demo", token);
-            return { isLogin: data.isLogin, message: data.message };
+            
+            return { isLogin, message };
         }).catch(err => {
             return { isLogin: false, message: "Ha ocurrido un error interno." };
         });
-    } else {
-        return {
-            isLogin: false,
-            message: "No hay token disponible.",
-        };
     }
+    return {
+        isLogin: false,
+        message: "No hay token disponible.",
+    };
 };
 
 export const getToken = () => {
