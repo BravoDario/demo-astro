@@ -1,4 +1,6 @@
-# Astro Starter Kit: Basics
+# Demo-astro
+
+This is the repository for the page [Dario Bravo Site](https://demo-astro-chi.vercel.app/)
 
 ```sh
 npm create astro@latest -- --template basics
