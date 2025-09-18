@@ -1,5 +1,5 @@
 //import ListBlog, { blogs } from "./ListBlog.jsx";
-import blogs from "../../content/blogs.js";
+import blogs from "../../data/blogs.js";
 
 const NewBlogForm = () => {
     

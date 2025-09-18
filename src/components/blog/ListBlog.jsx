@@ -1,4 +1,4 @@
-import blogs from "../../content/blogs";
+import blogs from "../../data/blogs";
 
 export const blogsEnabled = blogs.map((blog) => {
     return {
