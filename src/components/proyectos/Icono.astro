@@ -1,0 +1,11 @@
+---
+const { icono, key } = Astro.props;
+---
+
+<div class="group flex flex-col h-fit hover:shadow-lg">
+  <span class="w-auto h-10 *:h-full *:w-full group-hover:fill-white " set:html={icono} />
+  <p class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm uppercase text-center text-white ">
+    {key}
+  </p>
+</div>
+

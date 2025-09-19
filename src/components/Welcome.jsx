@@ -23,7 +23,7 @@ const Welcome = () => {
     }, [token]);
 
     return (
-        <div className="h-full py-4">
+        <div className="h-full py-4 bg-orange-600">
             <AccessByRole accessTo="WelcomeOptions" />
         </div>
     );

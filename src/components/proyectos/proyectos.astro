@@ -1,0 +1,97 @@
+---
+import iconos from "../../data/iconosProyectos.js";
+import Icono from "./Icono.astro";
+
+const getIconos = (list: string[]) => {
+  return list
+    .filter((key) => key in iconos)
+    .map((key) => {
+      return { icono: iconos[key], key };
+    });
+};
+---
+
+<div class="w-11/12 md:w-1/2 mx-auto my-4 space-y-2">
+
+  <a href="cv/proyectos/"><h1 class="text-2xl font-bold underline hover:no-underline duration-300 transition-colors">Mis proyectos</h1></a>
+  <div class="bg-green-db p-4 ">
+    <div class="flex flex-row w-full gap-8">
+      <div class="w-1/2 flex flex-col justify-center">
+        <h1 class="text-xl font-bold border-b-2 border-white">
+          ECOMONDO MEXICO
+        </h1>
+        <h2 class="text-base">IGECO MEXICO</h2>
+      </div>
+      <div class="grid grid-cols-4 w-1/2">
+        {
+          getIconos([
+            "astro",
+            "react",
+            "css",
+            "tailwind",
+            "node",
+            "express",
+            "git",
+            "github",
+          ]).map((icon) => <Icono icono={icon.icono} key={icon.key} />)
+        }
+      </div>
+    </div>
+    <p>
+      La feria de tecnologías verdes ECOMONDO MEXICO, organizada por IGECO
+      MEXICO, posee un sitio web que permite a los usuarios conocer y descubrir
+      las actividades de la comunidad. El <a
+        class="underline font-bold hover:no-underline duration-300 transition-colors"
+        target="_blank"
+        href="https://www.ecomondomexico.com.mx/">sitio ECOMONDO MEXICO</a
+      > se desarrolló utilizando tecnologías web como Astro, React, JavaScript
+      y Tailwind. <br /><br /> Se aplicaron conceptos sobre experiencia de usuario
+      (UX), diseño de interfaz (UI), y SEO para garantizar la disponibilidad y accesibilidad
+      de la página web para las personas interesadas en el evento. Se utilizaron
+      tecnologías de desarrollo web como Astro, React, JavaScript y Tailwind.
+    </p>
+    <img
+      src="/pictures/portfolio/projects/ecomondo.png"
+      alt="ECOMONDO MEXICO de IGECO"
+    />
+  </div>
+  <div class="bg-green-db p-4">
+    <div class="flex flex-row w-full gap-8">
+      <div class="w-1/2 flex flex-col justify-center">
+        <h1 class="text-xl font-bold border-b-2 border-white">Portal Telcel</h1>
+        <h2 class="text-base">
+          <a href="https://mexico.nttdata.com/" target="_blank">NTT DATA</a>
+        </h2>
+      </div>
+      <div class="grid grid-cols-4 w-1/2">
+        {
+          getIconos([
+            "angular",
+            "lit",
+            "css",
+            "bootstrap",
+            "node",
+            "git",
+            "github",
+            "bitbucket",
+          ]).map((icon) => <Icono icono={icon.icono} key={icon.key} />)
+        }
+      </div>
+    </div>
+    <p>
+      Desarrollo de una aplicación web para la gestión eficiente de ofertas e
+      inventarios de dispositivos móviles, utilizando Angular, Lit-Element y
+      Spring Boot para construir una arquitectura escalable y responsiva.<br />
+      <br /> El proyecto fortaleció mis habilidades técnicas en frontend y backend,
+      así como competencias blandas clave como la colaboración en equipo, la comunicación
+      efectiva y la adaptación a entornos ágiles.
+    </p>
+    <img
+      src="https://zonacel.net/wp-content/uploads/lanzamiento-del-5g-en-telcel-cuando-estara-disponible.jpg"
+      alt="Portal Telcel de NTT DATA"
+    />
+  </div>
+  <div class="hidden">
+    <h1>Arduino</h1>
+  </div>
+</div>

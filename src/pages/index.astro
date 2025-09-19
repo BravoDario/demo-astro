@@ -1,8 +1,52 @@
 ---
-import Welcome from "../components/Welcome.jsx";
 import Layout from "../layouts/Layout.astro";
+import Proyectos from "../components/proyectos/proyectos.astro";
 ---
 
-<Layout title="Darío Bravo">
-	<Welcome client:only="react" />
+<Layout title="Portafolio - Darío Bravo">
+  <div class="flex flex-col items-center justify-center gap-y-2 relative">
+    <h1
+      class="text-center text-sm font-bold bg-slate-300 bg-opacity-40 mt-2 mx-12 p-2 rounded-md max-w-2xl"
+    >
+      ¡Hola, mucho gusto!
+      <br /> Este portafolio es una ventana a mis proyectos, habilidades y pasiones. c;
+    </h1>
+    <div
+      class="bg-green-db flex flex-row justify-center items-center gap-6 h-auto w-full p-2 sticky top-24 rounded-md"
+    >
+      <div class="text-right">
+        <h1 class="text-white text-2xl font-bold border-b-2 border-white">
+          Darío Bravo
+        </h1>
+        <h2 class="text-white text-xl">Desarrollador de Software</h2>
+      </div>
+      <div class="w-20 h-20 flex flex-col justify-center items-center">
+        <img
+          src="/pictures/portfolio/20250306_211644.jpg"
+          alt="Darío Bravo"
+          class="w-full h-full object-cover rounded-full"
+        />
+      </div>
+    </div>
+    <section class="w-full md:w-9/12 space-y-2">
+      <h1 class="text-2xl font-bold">¿Quién soy?</h1>
+      <h2>
+        Especializado en desarrollo y programación web, desarrollo de API's, e
+        ingeniería de software.
+      </h2>
+      <h2>
+        Aprendiendo sobre el análisis de datos, y practicando con tecnologías de
+        programación backend como C# y JavaScript.
+      </h2>
+      <h2>
+        Desarrollador apasionado por tecnologías del área de informática. Con
+        habilidad para aprender y adaptarme al uso de diversas herramientas con
+        el objetivo de desarrollar soluciones innovadoras. Con capacidad para
+        identificar y responder a las necesidades de cada proyecto de manera
+        eficiente.
+      </h2>
+    </section>
+  </div>
+
+  <Proyectos />
 </Layout>
